@@ -42,6 +42,7 @@ st.markdown("""
         font-weight: 700;
         color: #1E3A8A;
         margin-bottom: 0px;
+        color : inherit;
     }
     .sub-header {
         font-size: 1.1rem;
@@ -63,6 +64,7 @@ st.markdown("""
         border-radius: 8px;
         padding: 16px;
         margin-bottom: 15px;
+        color: inherit;
     }
     .metric-container {
         background: #F8FAFC;
