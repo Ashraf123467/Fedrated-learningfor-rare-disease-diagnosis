@@ -64,8 +64,35 @@ st.markdown("""
         border-radius: 8px;
         padding: 16px;
         margin-bottom: 15px;
-        color: inherit;
+        color: #111827;
+    }    
+
+    .privacy-card h1,
+    .privacy-card h2,
+    .privacy-card h3,
+    .privacy-card h4,
+    .privacy-card p,
+    .privacy-card span,
+    .privacy-card div {
+        color: #111827;
     }
+
+/* Streamlit Dark Mode */
+[data-theme="dark"] .privacy-card {
+    background-color: #161B22;
+    border-color: #30363D;
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .privacy-card h1,
+[data-theme="dark"] .privacy-card h2,
+[data-theme="dark"] .privacy-card h3,
+[data-theme="dark"] .privacy-card h4,
+[data-theme="dark"] .privacy-card p,
+[data-theme="dark"] .privacy-card span,
+[data-theme="dark"] .privacy-card div {
+    color: #FFFFFF;
+}
     .metric-container {
         background: #F8FAFC;
         border-radius: 8px;
