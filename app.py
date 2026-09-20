@@ -232,7 +232,7 @@ with tab1:
 
     st.markdown("### 🌐 Central Aggregation Protocol")
     st.latex(r"W_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} W_k, \quad b_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} b_k")
-    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). "Raw patient records are not transmitted during federated training. Additional privacy techniques such as secure aggregation or differential privacy may be added for stronger protection.")
+    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). Raw patient records are not transmitted during federated training. Additional privacy techniques such as secure aggregation or differential privacy may be added for stronger protection.")
 
 # =============================================================================
 # TAB 2: HOSPITAL DATASETS (NON-IID)
