@@ -94,36 +94,6 @@ st.markdown("""
     color: #FFFFFF;
 }
 
-/* Hospital Cards */
-.hospital-card {
-    border: 1px solid #b7e4c7;
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 220px;
-}
-
-/* Default: LIGHT MODE */
-.hospital-card,
-.hospital-card h3,
-.hospital-card h4,
-.hospital-card p,
-.hospital-card span,
-.hospital-card div {
-    color: #111111 !important;
-}
-
-/* DARK MODE */
-@media (prefers-color-scheme: dark) {
-    .hospital-card,
-    .hospital-card h3,
-    .hospital-card h4,
-    .hospital-card p,
-    .hospital-card span,
-    .hospital-card div {
-        color: #ffffff !important;
-    }
-}
-
 </style>
 """, unsafe_allow_html=True)
 
