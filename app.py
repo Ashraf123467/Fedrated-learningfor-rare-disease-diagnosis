@@ -74,6 +74,33 @@ st.markdown("""
         text-align: center;
     }
 
+<style>
+.hospital-card {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 12px;
+    padding: 20px;
+    color: #f0f6fc !important;
+}
+
+.hospital-card h3,
+.hospital-card p,
+.hospital-card span,
+.hospital-card div {
+    color: #f0f6fc !important;
+}
+
+.hospital-card .muted {
+    color: #8b949e !important;
+}
+
+.hospital-card .success {
+    color: #3fb950 !important;
+}
+
+.hospital-card .danger {
+    color: #ff6b6b !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -143,6 +170,25 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # =============================================================================
 # TAB 1: PRIVACY & ARCHITECTURE FLOW
 # =============================================================================
+
+HOSPITAL_DISPLAY = {
+    "hospital_1": {
+        "name": "Hospital A",
+        "location": "Simulated Site A",
+        "samples": 300
+    },
+    "hospital_2": {
+        "name": "Hospital B",
+        "location": "Simulated Site B",
+        "samples": 400
+    },
+    "hospital_3": {
+        "name": "Hospital C",
+        "location": "Simulated Site C",
+        "samples": 250
+    }
+}
+
 with tab1:
     st.subheader("🛡️ Federated Learning Privacy Architecture")
     st.markdown("""
@@ -186,7 +232,7 @@ with tab1:
 
     st.markdown("### 🌐 Central Aggregation Protocol")
     st.latex(r"W_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} W_k, \quad b_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} b_k")
-    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). It is impossible to reverse-engineer individual patient clinical history from aggregated model weights.")
+    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). "Raw patient records are not transmitted during federated training. Additional privacy techniques such as secure aggregation or differential privacy may be added for stronger protection.")
 
 # =============================================================================
 # TAB 2: HOSPITAL DATASETS (NON-IID)
@@ -286,7 +332,8 @@ with tab3:
 # =============================================================================
 with tab4:
     st.subheader("📊 Performance Comparison: Isolated Local Models vs Federated Global Model")
-    st.write("Demonstrating how collaborative federated learning outperforms individual isolated hospital models on the benchmark population.")
+    st.write("Comparing isolated local models with the federated global model on a shared benchmark ")
+    st.write("This experiment evaluates whether federated collaboration can produce a competitive global model while keeping local training data decentralized.")
 
     # Train isolated local models for comparison if not already trained
     local_evals = []
@@ -395,7 +442,8 @@ with tab5:
         if global_prob > 0.5:
             st.error("🚨 Diagnostic Indicator: **POSITIVE FOR RARE DISEASE X**")
         else:
-            st.success("✅ Diagnostic Indicator: **NEGATIVE / CONTROL**")
+            st.success("✅ Predicted Risk Class: HIGH") 
+            st.write("This prediction is generated from synthetic data and is not a clinical diagnosis.")
 
     with col_res2:
         # Compare local hospital predictions
