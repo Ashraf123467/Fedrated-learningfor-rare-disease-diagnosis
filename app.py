@@ -202,68 +202,66 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # TAB 1: PRIVACY & ARCHITECTURE FLOW
 # =============================================================================
 
-HOSPITAL_DISPLAY = {
-    "hospital_1": {
+# ============================================================
+# PRIVACY & ARCHITECTURE — SIMULATED HOSPITALS
+# ============================================================
+
+hospital_cards = [
+    {
         "name": "Hospital A",
-        "location": "Simulated Site A",
+        "location": "Memphis, TN",
         "samples": 300
     },
-    "hospital_2": {
+    {
         "name": "Hospital B",
-        "location": "Simulated Site B",
+        "location": "Rochester, MN",
         "samples": 400
     },
-    "hospital_3": {
+    {
         "name": "Hospital C",
-        "location": "Simulated Site C",
+        "location": "Baltimore, MD",
         "samples": 250
     }
-}
+]
 
-with tab1:
-    st.subheader("🛡️ Federated Learning Privacy Architecture")
-    st.markdown("""
-    In traditional machine learning, hospitals must pool sensitive patient records into a centralized cloud database.
-    For rare diseases, cross-institutional data sharing is blocked by HIPAA/GDPR privacy restrictions.
-    
-    **Federated Averaging (FedAvg)** solves this by keeping patient data on-premise at each hospital:
-    """)
+cols = st.columns(3)
 
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col1:
-        st.markdown("""
-        <div class="privacy-card">
-            <h4>🏥 Hospital 1 (St. Jude)</h4>
-            <p><strong>Local Data:</strong> 300 Patients</p>
-            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
-            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
-            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown("""
-        <div class="privacy-card">
-            <h4>🏥 Hospital 2 (Mayo Clinic)</h4>
-            <p><strong>Local Data:</strong> 400 Patients</p>
-            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
-            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
-            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with col3:
-        st.markdown("""
-        <div class="privacy-card">
-            <h4>🏥 Hospital 3 (Johns Hopkins)</h4>
-            <p><strong>Local Data:</strong> 250 Patients</p>
-            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
-            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
-            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
-        </div>
-        """, unsafe_allow_html=True)
+for col, hospital in zip(cols, hospital_cards):
+    with col:
+        st.markdown(
+            f"""
+            <div class="privacy-card">
 
-    st.markdown("### 🌐 Central Aggregation Protocol")
-    st.latex(r"W_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} W_k, \quad b_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} b_k")
-    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). Raw patient records are not transmitted during federated training. Additional privacy techniques such as secure aggregation or differential privacy may be added for stronger protection.")
+                <h3>🏥 {hospital["name"]}</h3>
+
+                <p>
+                    <strong>Local Data:</strong>
+                    {hospital["samples"]} Patients
+                </p>
+
+                <p>
+                    🔒 <strong>Data Status:</strong>
+                    ON-PREMISE ONLY
+                </p>
+
+                <p>
+                    📤 <strong>Outbound:</strong>
+                    Model Weights
+                    <code>coef</code>
+                    <code>intercept</code>
+                </p>
+
+                <p>
+                    ❌ <strong>Transmitted Patient Records:</strong>
+                    0 rows (0 Bytes)
+                </p>
+
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+)
 
 # =============================================================================
 # TAB 2: HOSPITAL DATASETS (NON-IID)
