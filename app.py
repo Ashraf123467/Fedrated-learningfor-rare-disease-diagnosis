@@ -59,23 +59,23 @@ st.markdown("""
         color: #991B1B;
     }
     .privacy-card {
-        background-color: #F0FDF4;
-        border: 1px solid #BBF7D0;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 15px;
-        color: #111827;
-    }    
+    background-color: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 15px;
+    color: #111827;
+}
 
-    .privacy-card h1,
-    .privacy-card h2,
-    .privacy-card h3,
-    .privacy-card h4,
-    .privacy-card p,
-    .privacy-card span,
-    .privacy-card div {
-        color: #111827;
-    }
+.privacy-card h1,
+.privacy-card h2,
+.privacy-card h3,
+.privacy-card h4,
+.privacy-card p,
+.privacy-card span,
+.privacy-card div {
+    color: #111827;
+}
 
 /* Streamlit Dark Mode */
 [data-theme="dark"] .privacy-card {
@@ -93,14 +93,6 @@ st.markdown("""
 [data-theme="dark"] .privacy-card div {
     color: #FFFFFF;
 }
-    .metric-container {
-        background: #F8FAFC;
-        border-radius: 8px;
-        padding: 15px;
-        border: 1px solid #E2E8F0;
-        text-align: center;
-    }
-
 
 /* Hospital Cards */
 .hospital-card {
@@ -201,65 +193,50 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # =============================================================================
 # TAB 1: PRIVACY & ARCHITECTURE FLOW
 # =============================================================================
+with tab1:
+    st.subheader("🛡️ Federated Learning Privacy Architecture")
+    st.markdown("""
+    In traditional machine learning, hospitals must pool sensitive patient records into a centralized cloud database.
+    For rare diseases, cross-institutional data sharing is blocked by HIPAA/GDPR privacy restrictions.
+    
+    **Federated Averaging (FedAvg)** solves this by keeping patient data on-premise at each hospital:
+    """)
 
-# ============================================================
-# PRIVACY & ARCHITECTURE — SIMULATED HOSPITALS
-# ============================================================
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        st.markdown("""
+        <div class="privacy-card">
+            <h4>🏥 Hospital A</h4>
+            <p><strong>Local Data:</strong> 300 Patients</p>
+            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
+            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
+            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
+        </div>
+        """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <div class="privacy-card">
+            <h4>🏥 Hospital B</h4>
+            <p><strong>Local Data:</strong> 400 Patients</p>
+            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
+            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
+            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
+        </div>
+        """, unsafe_allow_html=True)
+    with col3:
+        st.markdown("""
+        <div class="privacy-card">
+            <h4>🏥 Hospital C </h4>
+            <p><strong>Local Data:</strong> 250 Patients</p>
+            <p>🔒 <strong>Data Status:</strong> ON-PREMISE ONLY</p>
+            <p>📤 <strong>Outbound:</strong> Model Weights (<code>coef</code>, <code>intercept</code>)</p>
+            <p>❌ <strong>Transmitted Patient Records:</strong> 0 rows (0 Bytes)</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-hospital_cards = [
-    {
-        "name": "Hospital A",
-        "location": "Memphis, TN",
-        "samples": 300
-    },
-    {
-        "name": "Hospital B",
-        "location": "Rochester, MN",
-        "samples": 400
-    },
-    {
-        "name": "Hospital C",
-        "location": "Baltimore, MD",
-        "samples": 250
-    }
-]
-
-cols = st.columns(3)
-
-for col, hospital in zip(cols, hospital_cards):
-    with col:
-        st.markdown(
-            f"""
-            <div class="privacy-card">
-
-                <h3>🏥 {hospital["name"]}</h3>
-
-                <p>
-                    <strong>Local Data:</strong>
-                    {hospital["samples"]} Patients
-                </p>
-
-                <p>
-                    🔒 <strong>Data Status:</strong>
-                    ON-PREMISE ONLY
-                </p>
-
-                <p>
-                    📤 <strong>Outbound:</strong>
-                    Model Weights
-                    <code>coef</code>
-                    <code>intercept</code>
-                </p>
-
-                <p>
-                    ❌ <strong>Transmitted Patient Records:</strong>
-                    0 rows (0 Bytes)
-                </p>
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    st.markdown("### 🌐 Central Aggregation Protocol")
+    st.latex(r"W_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} W_k, \quad b_{\text{global}} = \sum_{k=1}^{K} \frac{n_k}{N} b_k")
+    st.info("💡 **Key Security Guarantee:** The central server receives only numerical parameter matrices ($W_k, b_k$). It is impossible to reverse-engineer individual patient clinical history from aggregated model weights.")
 
 # =============================================================================
 # TAB 2: HOSPITAL DATASETS (NON-IID)
