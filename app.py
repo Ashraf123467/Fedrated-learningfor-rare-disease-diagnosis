@@ -74,78 +74,35 @@ st.markdown("""
         text-align: center;
     }
 
-/* ================================
-   FEDERATED HOSPITAL CARDS
-   Dark-mode compatible
-   ================================ */
 
+/* Hospital Cards */
 .hospital-card {
-    background: #161b22 !important;
-    border: 1px solid #30363d !important;
-    border-radius: 14px !important;
-    padding: 22px !important;
-    min-height: 230px !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
-    color: #f0f6fc !important;
+    border: 1px solid #b7e4c7;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 220px;
 }
 
-/* Force EVERY element inside card to readable text */
+/* Default: LIGHT MODE */
 .hospital-card,
-.hospital-card *,
-.hospital-card h1,
-.hospital-card h2,
 .hospital-card h3,
 .hospital-card h4,
 .hospital-card p,
 .hospital-card span,
 .hospital-card div {
-    color: #f0f6fc !important;
+    color: #111111 !important;
 }
 
-/* Hospital name */
-.hospital-card h3 {
-    font-size: 20px !important;
-    font-weight: 700 !important;
-    margin-bottom: 18px !important;
-}
-
-/* Normal information */
-.hospital-card p {
-    font-size: 14px !important;
-    line-height: 1.7 !important;
-    margin: 8px 0 !important;
-}
-
-/* Positive / safe information */
-.hospital-card .success {
-    color: #3fb950 !important;
-    font-weight: 600 !important;
-}
-
-/* Warning / blocked information */
-.hospital-card .danger {
-    color: #ff6b6b !important;
-    font-weight: 600 !important;
-}
-
-/* Model update information */
-.hospital-card .info {
-    color: #58a6ff !important;
-    font-weight: 600 !important;
-}
-
-/* Code/parameter badges */
-.hospital-card code {
-    background: #21262d !important;
-    color: #79c0ff !important;
-    border: 1px solid #30363d !important;
-    border-radius: 5px !important;
-    padding: 3px 7px !important;
-}
-
-/* Remove Streamlit container interference */
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    background: transparent !important;
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+    .hospital-card,
+    .hospital-card h3,
+    .hospital-card h4,
+    .hospital-card p,
+    .hospital-card span,
+    .hospital-card div {
+        color: #ffffff !important;
+    }
 }
 
 </style>
