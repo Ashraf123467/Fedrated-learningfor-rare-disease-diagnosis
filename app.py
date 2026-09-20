@@ -79,7 +79,6 @@ st.markdown("""
 /* ===== Hospital Cards ===== */
 .hospital-card {
     background: #161b22 !important;
-    border: 1px solid #30363d !important;
     border-radius: 12px;
     padding: 20px;
     min-height: 220px;
