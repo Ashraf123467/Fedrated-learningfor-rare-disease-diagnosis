@@ -42,7 +42,7 @@ st.markdown("""
         font-weight: 700;
         color: #1E3A8A;
         margin-bottom: 0px;
-        color : inherit;
+        color: inherit;
     }
     .sub-header {
         font-size: 1.1rem;
@@ -73,55 +73,53 @@ st.markdown("""
         border: 1px solid #E2E8F0;
         text-align: center;
     }
-    st.markdown("""
-    <style>
 
-/* ===== Hospital Cards ===== */
-.hospital-card {
-    background: #161b22 !important;
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 220px;
-    color: #f0f6fc !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
+    /* ===== Hospital Cards ===== */
+    .hospital-card {
+        background: #161b22 !important;
+        border-radius: 12px;
+        padding: 20px;
+        min-height: 220px;
+        color: #f0f6fc !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
 
-.hospital-card h3,
-.hospital-card h4,
-.hospital-card p,
-.hospital-card span,
-.hospital-card div {
-    color: #f0f6fc !important;
-}
+    .hospital-card h3,
+    .hospital-card h4,
+    .hospital-card p,
+    .hospital-card span,
+    .hospital-card div {
+        color: #f0f6fc !important;
+    }
 
-.hospital-card .muted {
-    color: #8b949e !important;
-}
+    .hospital-card .muted {
+        color: #8b949e !important;
+    }
 
-.hospital-card .success {
-    color: #3fb950 !important;
-}
+    .hospital-card .success {
+        color: #3fb950 !important;
+    }
 
-.hospital-card .danger {
-    color: #ff6b6b !important;
-}
+    .hospital-card .danger {
+        color: #ff6b6b !important;
+    }
 
-.hospital-card .info {
-    color: #58a6ff !important;
-}
+    .hospital-card .info {
+        color: #58a6ff !important;
+    }
 
 /* ===== Prevent Streamlit light container backgrounds ===== */
-div[data-testid="stVerticalBlockBorderWrapper"] {
-    background-color: transparent !important;
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: transparent !important;
 }
 
 /* ===== General text readability ===== */
-.stMarkdown,
-.stText,
-p,
-label {
-    color: #f0f6fc;
-}
+    .stMarkdown,
+    .stText,
+    p,
+    label {
+        color: #f0f6fc;
+    }
 
 </style>
 """, unsafe_allow_html=True)
